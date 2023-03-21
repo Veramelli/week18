@@ -1,0 +1,45 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  color: rgb(65, 65, 65);
+  background-color: rgb(221, 219, 219);
+}
+.wrapper {
+  line-height: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.name {
+  line-height: 40px;
+}
+
+.hero__wrapper {
+  padding: 20px;
+  padding-bottom: 25px;
+  border: 2px solid w;
+  border-radius: 10px;
+  text-align: center;
+  background: linear-gradient(10deg, grey, white);
+  margin: 10px;
+  max-width: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.image {
+  margin-top: 10px;
+  max-width: 100%;
+}
+
+.name {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.rating__wrapper {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
