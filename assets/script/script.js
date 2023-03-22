@@ -21,23 +21,27 @@ document.addEventListener("DOMContentLoaded", function (event) {
       <img class='image' src="${hero.url}"></div>  
       <div class="rating__wrapper"> 
       <div class="rating__title">Добавь рейтинг</div>
-      <form class="rating" id="${hero.name}">
-        <label for="rating__${hero.name}"></label>
-        <input type="radio" name="rating" id="rating__${hero.name}" class="rating__item" value="1"/>
-        <label for="rating__${hero.name}"></label>
-        <input type="radio" name="rating" id="rating__${hero.name}" class="rating__item" value="2"/>
-        <label for="rating__${hero.name}"></label>
-        <input type="radio" name="rating" id="rating__${hero.name}" class="rating__item" value="3"/>
-        <label for="rating__${hero.name}"></label>
-        <input type="radio" name="rating" id="rating__${hero.name}" class="rating__item" value="4"/>
-        <label for="rating__${hero.name}"></label>
-        <input type="radio" name="rating" id="rating__${hero.name}" class="rating__item" value="5"/>
-      </form>
+      <div class="rating">
+      <div class="rating__items" id="${hero.name}">
+        <input type="radio" name="rating" id="rating__5${hero.name}" class="rating__item" value="5"/>
+        <label for="rating__5${hero.name}" class="rating__label"></label>
+        <input type="radio" name="rating"  id="rating__4${hero.name}" class="rating__item" value="4"/>
+        <label for="rating__4${hero.name}"  class="rating__label"></label>
+        <input type="radio" name="rating" id="rating__3${hero.name}" class="rating__item" value="3"/>
+        <label for="rating__3${hero.name}" class="rating__label"></label>
+        <input type="radio" name="rating" id="rating__2${hero.name}" class="rating__item" value="2"/>
+        <label for="rating__2${hero.name}" class="rating__label"></label>
+        <input type="radio" name="rating" id="rating__1${hero.name}" class="rating__item" value="1"/>
+        <label for="rating__1${hero.name}" class="rating__label"></label>
+      </div>
+    </div>
+      
       </div>
       </div> 
 
     </div>`;
   }
+
   document.querySelector(".wrapper").innerHTML = heroesContent;
 
   for (let hero of heroes) {
@@ -45,10 +49,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let inputs = ratings.querySelectorAll("input");
 
     ratings.onclick = function () {
-      for (const input of inputs) {
+      for (let input of inputs) {
         if (input.checked) {
           localStorage.setItem(`рейтинг ${hero.name}`, input.value);
-          console.log(input.value);
         }
       }
     };
