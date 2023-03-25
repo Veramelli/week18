@@ -47,10 +47,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
   for (let hero of heroes) {
     let ratings = document.getElementById(`${hero.name}`);
     let inputs = ratings.querySelectorAll("input");
+    let rating = localStorage.getItem(`рейтинг ${hero.name}`);
+    let ratingInput = document.getElementById(`rating__${rating}${hero.name}`);
+    ratingInput.classList.add("checked");
 
     ratings.onclick = function () {
+      ratingInput.classList.remove("checked");
       for (let input of inputs) {
         if (input.checked) {
+          let ratingInput = document.getElementById(
+            `rating__${input.value}${hero.name}`
+          );
+          ratingInput.classList.add("checked");
           localStorage.setItem(`рейтинг ${hero.name}`, input.value);
         }
       }

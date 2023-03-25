@@ -100,3 +100,8 @@ body {
 .rating__label:checked ~ .rating__label:hover {
   color: #ffef9f;
 }
+
+.rating__item.checked,
+.rating__item.checked ~ .rating__label {
+  color: #ffd300;
+}
