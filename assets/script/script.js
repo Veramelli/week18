@@ -44,24 +44,38 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   document.querySelector(".wrapper").innerHTML = heroesContent;
 
+  const inputPressed = (e) => {
+    let inputs = e.target.parentElement.querySelectorAll("input");
+    let hero_name = e.target.parentElement.id;
+    for (let input of inputs) {
+      input.classList.remove("checked");
+    }
+    for (let i = 1; i <= e.target.value; i++) {
+      document
+        .getElementById(`rating__${i}${hero_name}`)
+        .classList.add("checked");
+    }
+    localStorage.setItem(`рейтинг ${hero_name}`, e.target.value);
+  };
+
   for (let hero of heroes) {
     let ratings = document.getElementById(`${hero.name}`);
     let inputs = ratings.querySelectorAll("input");
     let rating = localStorage.getItem(`рейтинг ${hero.name}`);
-    let ratingInput = document.getElementById(`rating__${rating}${hero.name}`);
-    ratingInput.classList.add("checked");
-
-    ratings.onclick = function () {
-      ratingInput.classList.remove("checked");
-      for (let input of inputs) {
-        if (input.checked) {
-          let ratingInput = document.getElementById(
-            `rating__${input.value}${hero.name}`
-          );
-          ratingInput.classList.add("checked");
-          localStorage.setItem(`рейтинг ${hero.name}`, input.value);
-        }
-      }
-    };
+    if (typeof rating != "undefined" && rating != null) {
+      let ratingInput = document.getElementById(
+        `rating__${rating}${hero.name}`
+      );
+      ratingInput.classList.add("checked");
+    }
+    for (let input of inputs) {
+      input.addEventListener("click", inputPressed);
+    }
   }
 });
+
+//Один ключ, через json - массив рейтингов const arr = new Map([
+/* ['key1', 'value1'],
+  ['key2', 'value2'],
+  ['key3', 'value3']
+]); */
